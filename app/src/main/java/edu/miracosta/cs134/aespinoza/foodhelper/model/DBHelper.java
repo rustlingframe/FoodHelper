@@ -61,8 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 + FIELD_LAT + " REAL,"
                 + FIELD_LONG + " REAL,"
                 + FIELD_DESCRIPTION + " TEXT,"
-                + FIELD_IS_DISCOUNTED+" BIT,"
-                +FIELD_IS_FREE+" BIT"
+                + FIELD_IS_DISCOUNTED+" INTEGER,"
+                +FIELD_IS_FREE+" INTEGER"
                 + ")";
         database.execSQL(createQuery);
 
@@ -142,45 +142,44 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                  FoodResource foodResource =
-                        new FoodResource(cursor.getString(0),
-                                cursor.getLong(1),
-                                cursor.getString(2),
-                                cursor.getString(3),
-                                cursor.getString(4),
-                                cursor.getString(5),
-                                cursor.getString(6),
-                                cursor.getString(7),
-                                cursor.getDouble(8),
-                                cursor.getDouble(9),
-                                cursor.getString(10),
-                                cursor.getString(11),
-                                cursor.getInt(12),
-                                cursor.getInt(13));
+                         new FoodResource(cursor.getString(0),
+                                            cursor.getLong(1),
+                                            cursor.getString(2),
+                                            cursor.getString(3),
+                                            cursor.getString(4),
+                                            cursor.getString(5),
+                                            cursor.getString(6),
+                                            cursor.getString(7),
+                                            cursor.getDouble(8),
+                                            cursor.getDouble(9),
+                                            cursor.getString(10),
+                                            cursor.getInt(11),
+                                            cursor.getInt(12));
 
-                pokemonList.add(pokemon);
+                foodResourceList.add(foodResource);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return pokemonList;
+        return foodResourceList;
     }
 
-    public void deletePokemon(Pokemon pokemon) {
+    public void deleteFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // DELETE THE TABLE ROW
-        db.delete(POKEMON_TABLE, POKEMON_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(pokemon.getId())});
+        db.delete(FOODRESOURCE_TABLE, FOODRESOURCE_KEY_FIELD_ID + " = ?",
+                new String[]{String.valueOf(foodResource.getLocation().getId())});
         db.close();
     }
 
-    public void deleteAllPokemon() {
+    public void deleteAllFoodResource() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(POKEMON_TABLE, null, null);
+        db.delete(FOODRESOURCE_TABLE, null, null);
         db.close();
     }
 
-    public Pokemon getPokemon(int id) {
+    public FoodResource getFoodResource(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 POKEMON_TABLE,
