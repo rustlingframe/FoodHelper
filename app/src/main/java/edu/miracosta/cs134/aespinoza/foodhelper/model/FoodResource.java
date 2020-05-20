@@ -12,7 +12,7 @@ public class FoodResource implements Parcelable {
     String organizationName;
     Location location;
     Date startDate;
-    Date endDate;//optional for porject for specific events that occur at random
+    Date endDate;//optional for project for specific events that occur at random
     Time startTime;
     Time endTime;
     String eventDescription;

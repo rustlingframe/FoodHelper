@@ -10,7 +10,9 @@ import com.google.android.gms.maps.GoogleMap;
 import java.util.List;
 
 /**
- *
+ * MainActivity, the first real screen for the app.
+ * Project - Final Project CS134
+ * @Author firstName lastName & Alfredo Hernandez
  */
 public class MainActivity extends AppCompatActivity {
 

@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         //Wait four seconds then go to the main activity
-        //TimerTask waits a specfic amount of time before performing a task
+        //TimerTask waits a specific amount of time before performing a task
 
         TimerTask task = new TimerTask() {
             @Override
