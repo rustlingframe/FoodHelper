@@ -1,0 +1,32 @@
+{
+  "foodresource": [{
+      "organizationName":"FoodResourceTestObject1",
+      "id": 1,
+      "name": "LocationTestObject",
+      "address": "1 Barnard Drive",
+      "city": "Oceanside",
+      "state": "CA",
+      "zipcode": "92056",
+      "phone": "(760) 795-6886",
+      "latitude": "33.191551",
+      "longitude": "-117.303615",
+      "description": "Test Description",
+      "isDiscounted": "true",
+      "isFree": "false"
+  }, {
+    "organizationName":"FoodResourceTestObject2",
+    "id": 2,
+    "name": "LocationTestObject2",
+    "address": "773 S Nardo Ave Apt M-10",
+    "city": "Solana Beach",
+    "state": "CA",
+    "zipcode": "92075",
+    "phone": "(858) 783-8934",
+    "latitude": "45.191551",
+    "longitude": "200.303615",
+    "description": "Test Description2",
+    "isDiscounted": "false",
+    "isFree": "true"
+    }
+  ]
+}
