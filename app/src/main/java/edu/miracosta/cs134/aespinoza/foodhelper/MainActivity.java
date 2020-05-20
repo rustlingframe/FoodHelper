@@ -9,6 +9,9 @@ import com.google.android.gms.maps.GoogleMap;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     //Load a Google Map into our mapsFragment
