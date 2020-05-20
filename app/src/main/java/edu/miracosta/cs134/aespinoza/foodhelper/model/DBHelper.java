@@ -181,42 +181,44 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public FoodResource getFoodResource(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
-                POKEMON_TABLE,
-                new String[]{POKEMON_KEY_FIELD_ID,
-                        FIELD_NAME,
-                        FIELD_IMG_URI,
-                        FIELD_TYPE,
-                        FIELD_HEIGHT,
-                        FIELD_WEIGHT,
-                        FIELD_CANDY_COUNT,
-                        FIELD_EGG,
-                        FIELD_SPAWN_CHANCE,
-                        FIELD_AVERAGE_SPAWNS,
-                        FIELD_SPAWN_TIME,
-                        FIELD_WEAKNESSES},
-                POKEMON_KEY_FIELD_ID + "=?",
-                new String[]{String.valueOf(id)},
-                null, null, null, null);
+                Cursor cursor = db.query(
+                        FOODRESOURCE_TABLE,
+                        new String[]{FIELD_ORGANIZATION_NAME,
+                                FOODRESOURCE_KEY_FIELD_ID,
+                                FIELD_NAME,
+                                FIELD_ADDRESS,
+                                FIELD_CITY,
+                                FIELD_STATE,
+                                FIELD_ZIP_CODE,
+                                FIELD_PHONE,
+                                FIELD_LAT,
+                                FIELD_LONG,
+                                FIELD_DESCRIPTION,
+                                FIELD_IS_DISCOUNTED,
+                                FIELD_IS_FREE},
+                        FOODRESOURCE_KEY_FIELD_ID+"=?",
+                        new String[]{String.valueOf(id)},
+                        null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        Pokemon pokemon =
-                new Pokemon(cursor.getLong(0),
-                        cursor.getString(1),
-                        Uri.parse(cursor.getString(2)),
-                        csvToArray(cursor.getString(3)),
+        FoodResource foodResource =
+                new FoodResource(cursor.getString(0),
+                        cursor.getLong(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
                         cursor.getString(4),
                         cursor.getString(5),
-                        cursor.getInt(6),
+                        cursor.getString(6),
                         cursor.getString(7),
                         cursor.getDouble(8),
                         cursor.getDouble(9),
                         cursor.getString(10),
-                        csvToArray(cursor.getString(11)));
+                        cursor.getInt(11),
+                        cursor.getInt(12));
         cursor.close();
         db.close();
-        return pokemon;
+        return foodResource;
     }
 }
