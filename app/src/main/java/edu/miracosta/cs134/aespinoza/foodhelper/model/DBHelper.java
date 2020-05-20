@@ -141,19 +141,21 @@ public class DBHelper extends SQLiteOpenHelper {
         //COLLECT EACH ROW IN THE TABLE
         if (cursor.moveToFirst()) {
             do {
-                 pokemon =
-                        new Pokemon(cursor.getLong(0),
-                                cursor.getString(1),
-                                Uri.parse(cursor.getString(2)),
-                                csvToArray(cursor.getString(3)),
+                 FoodResource foodResource =
+                        new FoodResource(cursor.getString(0),
+                                cursor.getLong(1),
+                                cursor.getString(2),
+                                cursor.getString(3),
                                 cursor.getString(4),
                                 cursor.getString(5),
-                                cursor.getInt(6),
+                                cursor.getString(6),
                                 cursor.getString(7),
                                 cursor.getDouble(8),
                                 cursor.getDouble(9),
                                 cursor.getString(10),
-                                csvToArray(cursor.getString(11)));
+                                cursor.getString(11),
+                                cursor.getInt(12),
+                                cursor.getInt(13));
 
                 pokemonList.add(pokemon);
             } while (cursor.moveToNext());
