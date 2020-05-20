@@ -2,6 +2,7 @@ package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -22,6 +23,8 @@ public class HelpActivity extends AppCompatActivity {
      */
     public void goBack(View v)
     {
-
+        Intent intent = new Intent(this, MainActivity.class) ;
+        startActivity(intent) ;
+        finish() ;
     }
 }

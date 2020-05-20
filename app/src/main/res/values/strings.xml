@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Food Helper</string>
     <string name="title_activity_maps">Map</string>
+    <string name="help_message">In these unprecedented times we need all the help we can get.
+        We’re all in this together! In an effort to help we’ve made an app to help you always have
+        food to eat. In order to use the app to the fullest we’ve also included a guide to get around
+        the app!</string>
+    <string name="go_to_main_activity">Return</string>
+    <string name="how_to_use">Who knows!?</string>
 </resources>
