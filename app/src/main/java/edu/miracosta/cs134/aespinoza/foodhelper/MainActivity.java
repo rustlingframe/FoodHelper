@@ -3,6 +3,7 @@ package edu.miracosta.cs134.aespinoza.foodhelper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -23,5 +24,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    /**
+     * Takes the user to the helpActivity.
+     * @param v current view
+     */
+    public void goToHelp(View v)
+    {
+
     }
 }
