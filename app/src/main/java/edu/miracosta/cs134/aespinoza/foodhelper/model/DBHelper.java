@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //TASK: DEFINE THE DATABASE VERSION AND NAME  (DATABASE CONTAINS MULTIPLE TABLES)
-    static final String DATABASE_NAME = "FoodResource";
+    public static final String DATABASE_NAME = "FoodResource";
     private static final int DATABASE_VERSION = 1;
 
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE CAFFEINE LOCATIONS TABLE
@@ -79,7 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //********** LOCATIONS TABLE OPERATIONS:  ADD, GETALL, DELETE
 
-    public void addPokemon(FoodResource foodResource) {
+    public void addFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -220,5 +220,47 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return foodResource;
+    }
+
+    public boolean importFoodResourcesFromCSV(String csvFileName) {
+        AssetManager manager = mContext.getAssets();
+        InputStream inStream;
+        try {
+            inStream = manager.open(csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
+        String line;
+        try {
+            while ((line = buffer.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length != 9) {
+                    Log.d("FoodResource", "Skipping Bad CSV Row: " + Arrays.toString(fields));
+                    continue;
+                }
+                String organizationName = fields[0].trim();
+                long id = Long.parseLong(fields[1].trim());
+                String name = fields[2].trim();
+                String address = fields[3].trim();
+                String city = fields[4].trim();
+                String state = fields[5].trim();
+                String zipCode = fields[6].trim();
+                String phone = fields[7].trim();
+                double latitude = Double.parseDouble(fields[8].trim());
+                double longitude = Double.parseDouble(fields[9].trim());
+                String eventDescription = fields[10].trim();
+                int isDiscounted = Integer.parseInt(fields[11].trim());
+                int isFree = Integer.parseInt(fields[12].trim());
+
+                addFoodResource(new FoodResource(organizationName,id, name, address, city, state, zipCode, phone, latitude, longitude,eventDescription,isDiscounted,isFree));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

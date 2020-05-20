@@ -56,8 +56,8 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(mResourceId, null);
 
-        LinearLayout locationListLinearLayout =
-                view.findViewById(R.id.locationListLinearLayout);
+        LinearLayout foodResourceListLinearLayout =
+                view.findViewById(R.id.foodResourceListLinearLayout);
 
         TextView foodResourceListOrganizationNameTextView =
                 view.findViewById(R.id.foodResourceListOrganizationNameTextView);
@@ -66,7 +66,7 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
         TextView foodResourceListPhoneTextView =
                 view.findViewById(R.id.foodResourceListPhoneTextView);
 
-        locationListLinearLayout.setTag(selectedFoodResource);
+        foodResourceListLinearLayout.setTag(selectedFoodResource);
 
         foodResourceListOrganizationNameTextView.setText(selectedFoodResource.getOrganizationName());
         foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());

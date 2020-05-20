@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:onClick="viewLocationDetails"
     android:clickable="true"
-    android:id="@+id/locationListLinearLayout">
+    android:id="@+id/foodResourceListLinearLayout">
 
     <ImageView
         android:id="@+id/foodResourceListImageView"
