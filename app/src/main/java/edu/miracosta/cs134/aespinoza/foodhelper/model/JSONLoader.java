@@ -40,7 +40,7 @@ public class JSONLoader {
         DownloadJSONTask task = new DownloadJSONTask() ;
         task.execute(JSON_URI) ;
 
-        return allFoodResourceList;
+        return allFoodResourceList ;
     }
 
 
@@ -70,8 +70,6 @@ public class JSONLoader {
     // progress is used to report back how the user wants it such as a decimal progression, an int, or even a String.
     private static class DownloadJSONTask extends AsyncTask<String, Void, JSONObject>
     {
-
-
         // Connect to the URL (source of JSON)
         // Parse it and construct a JSON object
         @Override
@@ -80,7 +78,7 @@ public class JSONLoader {
             {
                 return readJSONFromUrl(JSON_URI);
             } catch (Exception e) {
-                Log.e("JSONLoader", "Error loading JSON from " + JSON_URI +" "+ e.getMessage()) ;
+                Log.e("JSONLoader", "Error loading JSON from " + JSON_URI + e.getMessage()) ;
                 return null ;
             }
         }
@@ -90,8 +88,10 @@ public class JSONLoader {
         @Override
         protected void onPostExecute(JSONObject jsonRootObject) {
             try {
-                JSONArray allFoodResourceJSON = jsonRootObject.getJSONArray("foodresource");
+
+                JSONArray allFoodResourceJSON = jsonRootObject.getJSONArray("foodresource") ;
                 int numberOfFoodResource = allFoodResourceJSON.length();
+
                 FoodResource foodResource;
                 long id;
                 String organizationName;
@@ -112,15 +112,17 @@ public class JSONLoader {
                     JSONObject pmJSON = allFoodResourceJSON.getJSONObject(i);
                     id = pmJSON.getLong("id");
                     organizationName = pmJSON.getString("organizationName");
-
                     name = pmJSON.getString("name");
                     address = pmJSON.getString("address");
+
                     city = pmJSON.getString("city");
                     state = pmJSON.getString("state");
                     zipCode = pmJSON.getString("zipcode");
+
                     phoneNumber = pmJSON.getString("phone");
                     latitude = pmJSON.getDouble("latitude");
                     longitude = pmJSON.getDouble("longitude");
+
                     description = pmJSON.getString("description");
                     isDiscounted = pmJSON.getInt("isDiscounted");
                     isFree = pmJSON.getInt("isFree");
@@ -132,7 +134,7 @@ public class JSONLoader {
                     //*******WILL IMPLEMENT WHEN THE CODE IS COMPLETE AND FIND IMAGES ONLINE
                     //imgUri = Uri.parse(IMG_URI_BASE + String.format("%03d", id) + ".png");
 
-                    foodResource = new FoodResource(   id, organizationName,name,address,city,state,zipCode,phoneNumber,latitude,
+                    foodResource = new FoodResource(id,organizationName,name,address,city,state,zipCode,phoneNumber,latitude,
                             longitude,description,isDiscounted,isFree);
 
                     allFoodResourceList.add(foodResource);

@@ -2,15 +2,9 @@ package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,7 +20,6 @@ import java.util.List;
 
 import edu.miracosta.cs134.aespinoza.foodhelper.model.DBHelper;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
-import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResourceListAdapter;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
 
 /**
@@ -52,18 +45,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mDB = new DBHelper(this);
         mAllFoodResourcesList = mDB.getAllFoodResource();
-
-
-        if(mAllFoodResourcesList.size() == 0 ){
+        if(mAllFoodResourcesList.size() == 0){
             mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
             for(FoodResource f : mAllFoodResourcesList){
                 mDB.addFoodResource(f);
             }
         }
 
-        mFoodResourceListAdapter = new FoodResourceListAdapter(this,R.layout.foodresource_list_item,mAllFoodResourcesList);
+        /** This is fine*/
+        mFoodResourceListAdapter = new FoodResourceListAdapter(this, R.layout.foodresource_list_item, mAllFoodResourcesList);
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView);
         mFoodResourcesListView.setAdapter(mFoodResourceListAdapter);
+
+        mFoodResourceListAdapter.notifyDataSetChanged();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
                 findFragmentById(R.id.mapsfragment);
@@ -103,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    public void viewPokemonDetails(View v)
+    public void viewFoodResourcesDetails(View v)
     {
 
     }
