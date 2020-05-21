@@ -2,16 +2,16 @@
 <resources>
     <string name="app_name">Food Helper</string>
     <string name="title_activity_maps">Mapa</string>
-    <string name="help_message">"En estos tiempos sin precedentes necesitamos toda la ayuda que podamos obtener. ¡Estamos todos juntos en esto! En un esfuerzo por ayudar, hemos creado una aplicación para ayudarlo a que siempre tenga comida para comer. ¡Para utilizar la aplicación al máximo, también hemos incluido una guía para moverse por la aplicación! "</string>
+    <string name="help_message">"En estos tiempos sin precedentes necesitamos toda la ayuda que podamos obtener. ¡Estamos todos juntos en esto! En un esfuerzo por ayudar, hemos creado una aplicación para ayudarlo a que siempre tenga comida para comer. ¡Para utilizar la aplicación al máximo, también hemos incluido una guía para moverse por la aplicación!"</string>
     <string name="go_to_main_activity">"Regreso "</string>
-    <string name="how_to_use">"Al principio, la aplicación muestra recursos de alimentos gratuitos y recursos de alimentos con descuento. Si hace clic en el ícono de ajustes, podrá limitar lo que aparece en función de si los recursos son gratuitos o tienen descuento. Al hacer clic en uno de los elementos, irá a una pantalla con más detalles relacionados con el elemento. El botón de cerrar sesión finalizará su sesión. "</string>
-    <string name="sign_out_message">" ¡Cuídate!"</string>
-    <string name="login_button">"Iniciar sesión "</string>
+    <string name="how_to_use">"Al principio, la aplicación muestra recursos de alimentos gratuitos y recursos de alimentos con descuento. Si hace clic en el ícono de ajustes, podrá limitar lo que aparece en función de si los recursos son gratuitos o tienen descuento. Al hacer clic en uno de los elementos, irá a una pantalla con más detalles relacionados con el elemento. El botón de cerrar sesión finalizará su sesión."</string>
+    <string name="sign_out_message">"¡Cuídate!"</string>
+    <string name="login_button">"Iniciar sesión"</string>
     <string name="sign_up_button">Regístrate</string>
     <string name="temporary">Taco animado o pollo</string>
-    <string name="reset_password_button">"Restablecer la contraseña "</string>
-    <string name="enter_email">"Correo electrónico "</string>
-    <string name="enter_password">"Contraseña "</string>
-    <string name="enter_credentials">"Por favor ingrese su información "</string>
+    <string name="reset_password_button">"Restablecer la contraseña"</string>
+    <string name="enter_email">"Correo electrónico"</string>
+    <string name="enter_password">"Contraseña"</string>
+    <string name="enter_credentials">"Por favor ingrese su información"</string>
     <string name="porky_pig">"Porky Pig despidiéndose"</string>
 </resources>
