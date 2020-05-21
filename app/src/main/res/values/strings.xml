@@ -13,5 +13,10 @@
     your session.</string>
     <string name="sign_out_message">Take care!</string>
     <string name="login_button">Login</string>
-    <string name="reset_password_button">Login</string>
+    <string name="reset_password_button">Reset Password</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_password">Password</string>
+    <string name="enter_credentials">Please enter your information</string>
+
+
 </resources>
