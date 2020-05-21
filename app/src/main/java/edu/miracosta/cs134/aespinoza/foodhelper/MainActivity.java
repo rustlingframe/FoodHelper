@@ -42,30 +42,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     //Load a Google Map into our mapsFragment
     private GoogleMap map;
 
+    public static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
+                findFragmentById(R.id.mapsfragment);
+        mapFragment.getMapAsync(this);
+
         mDB = new DBHelper(this);
         mAllFoodResourcesList = mDB.getAllFoodResource();
 
-        if(mAllFoodResourcesList.size() == 0){
+            if(mAllFoodResourcesList.size() == 0){
             mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
-            for(FoodResource f : mAllFoodResourcesList)
+            for(FoodResource f : mAllFoodResourcesList){
                 mDB.addFoodResource(f);
+            }
         }
 
         mFoodResourceListAdapter = new FoodResourceListAdapter(this,R.layout.foodresource_list_item,mAllFoodResourcesList);
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView);
         mFoodResourcesListView.setAdapter(mFoodResourceListAdapter);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
-                findFragmentById(R.id.mapsfragment);
-        mapFragment.getMapAsync(this);
-
-
-
     }
 
 
