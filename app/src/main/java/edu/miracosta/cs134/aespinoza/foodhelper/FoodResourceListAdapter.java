@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
@@ -81,7 +80,6 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
         foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
         foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());
 
-        notifyDataSetChanged();
         return view;
     }
 }
