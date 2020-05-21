@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -59,6 +60,10 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
         LinearLayout foodResourceListLinearLayout =
                 view.findViewById(R.id.foodResourceListLinearLayout);
 
+        ImageView foodResourceListImageView =
+                view.findViewById(R.id.foodResourceListImageView);
+
+
         TextView foodResourceListOrganizationNameTextView =
                 view.findViewById(R.id.foodResourceListOrganizationNameTextView);
         TextView foodResourceListAddressTextView =
@@ -68,6 +73,7 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
         foodResourceListLinearLayout.setTag(selectedFoodResource);
 
+        foodResourceListLinearLayout.setTag(selectedFoodResource);
         foodResourceListOrganizationNameTextView.setText(selectedFoodResource.getOrganizationName());
         foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
         foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());

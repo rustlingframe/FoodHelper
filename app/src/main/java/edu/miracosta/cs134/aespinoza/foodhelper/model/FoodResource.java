@@ -72,7 +72,7 @@ public class FoodResource implements Parcelable {
         isFree = in.readInt();
     }
 
-    public static final Creator<FoodResource> CREATOR = new Creator<FoodResource>() {
+    public static final Parcelable.Creator<FoodResource> CREATOR = new Parcelable.Creator<FoodResource>() {
         @Override
         public FoodResource createFromParcel(Parcel in) {
             return new FoodResource(in);

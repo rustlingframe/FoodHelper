@@ -26,7 +26,6 @@ public class JSONLoader {
 
     public static final String JSON_URI = "https://raw.githubusercontent.com/rustlingframe/FoodResources/master/foodresources.json";
     //FROM GITHUB: https://github.com/rustlingframe/FoodResources/blob/master/foodresources.json";
-    public static final String IMG_URI_BASE = "";
 
     private static List<FoodResource> allFoodResourceList ;
 
