@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE CAFFEINE LOCATIONS TABLE
     private static final String FOODRESOURCE_TABLE = "foodresource";
-    public static final String FIELD_ORGANIZATION_NAME = "organizationName";
+    private static final String FIELD_ORGANIZATION_NAME = "organizationName";
     private static final String FOODRESOURCE_KEY_FIELD_ID = "id";
     private static final String FIELD_NAME = "name";
     private static final String FIELD_ADDRESS = "address";
@@ -50,8 +50,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         String createQuery = "CREATE TABLE " + FOODRESOURCE_TABLE + "("
-                + FIELD_ORGANIZATION_NAME+ " TEXT, "
                 + FOODRESOURCE_KEY_FIELD_ID + " INTEGER PRIMARY KEY, "
+                + FIELD_ORGANIZATION_NAME+ " TEXT, "
                 + FIELD_NAME + " TEXT, "
                 + FIELD_ADDRESS + " TEXT,"
                 + FIELD_CITY + " TEXT,"
@@ -82,17 +82,21 @@ public class DBHelper extends SQLiteOpenHelper {
     public void addFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-        values.put(FIELD_ORGANIZATION_NAME, foodResource.getOrganizationName());
         values.put(FOODRESOURCE_KEY_FIELD_ID,foodResource.getLocation().getId());
+        values.put(FIELD_ORGANIZATION_NAME, foodResource.getOrganizationName());
+
+
         values.put(FIELD_NAME, foodResource.getLocation().getName());
         values.put(FIELD_ADDRESS, foodResource.getLocation().getAddress());
+
         values.put(FIELD_CITY, foodResource.getLocation().getCity());
         values.put(FIELD_STATE, foodResource.getLocation().getState());
         values.put(FIELD_ZIP_CODE, foodResource.getLocation().getZipCode());
+
         values.put(FIELD_PHONE, foodResource.getLocation().getPhone());
         values.put(FIELD_LAT, foodResource.getLocation().getLatitude());
         values.put(FIELD_LONG, foodResource.getLocation().getLongitude());
+
         values.put(FIELD_DESCRIPTION, foodResource.getEventDescription());
         values.put(FIELD_IS_DISCOUNTED, foodResource.getDiscounted());
         values.put(FIELD_IS_FREE, foodResource.getFree());
@@ -121,8 +125,9 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 FOODRESOURCE_TABLE,
-                new String[]{FIELD_ORGANIZATION_NAME,
-                        FOODRESOURCE_KEY_FIELD_ID,
+                new String[]{FOODRESOURCE_KEY_FIELD_ID,
+                        FIELD_ORGANIZATION_NAME,
+
                         FIELD_NAME,
                         FIELD_ADDRESS,
                         FIELD_CITY,
@@ -142,8 +147,9 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                  FoodResource foodResource =
-                         new FoodResource(cursor.getString(0),
-                                            cursor.getLong(1),
+                         new FoodResource(cursor.getLong(0),
+                                 cursor.getString(1),
+
                                             cursor.getString(2),
                                             cursor.getString(3),
                                             cursor.getString(4),
@@ -183,8 +189,9 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
                 Cursor cursor = db.query(
                         FOODRESOURCE_TABLE,
-                        new String[]{FIELD_ORGANIZATION_NAME,
-                                FOODRESOURCE_KEY_FIELD_ID,
+                        new String[]{FOODRESOURCE_KEY_FIELD_ID,
+                                FIELD_ORGANIZATION_NAME,
+
                                 FIELD_NAME,
                                 FIELD_ADDRESS,
                                 FIELD_CITY,
@@ -204,8 +211,9 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         FoodResource foodResource =
-                new FoodResource(cursor.getString(0),
-                        cursor.getLong(1),
+                new FoodResource(cursor.getLong(0),
+                        cursor.getString(1),
+
                         cursor.getString(2),
                         cursor.getString(3),
                         cursor.getString(4),
@@ -241,8 +249,9 @@ public class DBHelper extends SQLiteOpenHelper {
                     Log.d("FoodResource", "Skipping Bad CSV Row: " + Arrays.toString(fields));
                     continue;
                 }
-                String organizationName = fields[0].trim();
-                long id = Long.parseLong(fields[1].trim());
+                long id = Long.parseLong(fields[0].trim());
+                String organizationName = fields[1].trim();
+
                 String name = fields[2].trim();
                 String address = fields[3].trim();
                 String city = fields[4].trim();
@@ -255,7 +264,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 int isDiscounted = Integer.parseInt(fields[11].trim());
                 int isFree = Integer.parseInt(fields[12].trim());
 
-                addFoodResource(new FoodResource(organizationName,id, name, address, city, state, zipCode, phone, latitude, longitude,eventDescription,isDiscounted,isFree));
+                addFoodResource(new FoodResource(id,   organizationName, name, address, city, state, zipCode, phone, latitude, longitude,eventDescription,isDiscounted,isFree));
             }
         } catch (IOException e) {
             e.printStackTrace();

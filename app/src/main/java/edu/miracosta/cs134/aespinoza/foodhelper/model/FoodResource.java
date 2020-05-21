@@ -32,7 +32,7 @@ public class FoodResource implements Parcelable {
      * with the name of the organization, the data for creating a
      * Location object, and an eventDescription
      */
-    public FoodResource(String organizationName, long id, String name, String address, String city,
+    public FoodResource( long id,    String organizationName, String name, String address, String city,
                         String state, String zipCode, String phone, double latitude, double longitude,
                         String eventDescription) {
         this.organizationName = organizationName;
@@ -46,7 +46,7 @@ public class FoodResource implements Parcelable {
      * FoodRespurce()- Creates a FoodResource object with the name of the organization, the data for creating a
      * Location object,  an event Description, check wheter food is free, check wheterer food is discounted
      */
-    public FoodResource(String organizationName, long id, String name, String address, String city,
+    public FoodResource( long id,   String organizationName,  String name, String address, String city,
                         String state, String zipCode, String phone, double latitude, double longitude,
                         String eventDescription, int isDiscounted, int isFree) {
         this.organizationName = organizationName;

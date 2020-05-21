@@ -73,7 +73,6 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
         foodResourceListLinearLayout.setTag(selectedFoodResource);
 
-        foodResourceListLinearLayout.setTag(selectedFoodResource);
         foodResourceListOrganizationNameTextView.setText(selectedFoodResource.getOrganizationName());
         foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
         foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());

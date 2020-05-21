@@ -50,13 +50,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mDB = new DBHelper(this);
         mAllFoodResourcesList = mDB.getAllFoodResource();
+
+        System.out.println(mDB.getAllFoodResource() + "123123123123123123123123123123123132123123123123123123132132");
 
         if(mAllFoodResourcesList.size() == 0 ){
             mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
             for(FoodResource f : mAllFoodResourcesList){
-                mDB.addFoodResource(f); }
+                mDB.addFoodResource(f);
+            }
         }
 
         mFoodResourceListAdapter = new FoodResourceListAdapter(this,R.layout.foodresource_list_item,mAllFoodResourcesList);
