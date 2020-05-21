@@ -27,12 +27,12 @@ public class JSONLoader {
     public static final String JSON_URI = "https://raw.githubusercontent.com/rustlingframe/FoodResources/master/foodresources.json";
     //FROM GITHUB: https://github.com/rustlingframe/FoodResources/blob/master/foodresources.json";
 
-    private static List<FoodResource> allFoodResourceList ;
+    private static ArrayList<FoodResource> allFoodResourceList ;
 
     // DONE: Add a static method that reads the notusedpokedex.json file directly from the web
     // DONE: instead of using local AssetManager.  The pokedex can be found here:
     // DONE: https://github.com/Biuni/PokemonGO-Pokedex/blob/master/pokedex.json
-    public static List<FoodResource> loadJSONFromHTTP() {
+    public static ArrayList<FoodResource> loadJSONFromHTTP() {
         allFoodResourceList = new ArrayList<>() ;
         // Android enforces that HTTP/HTTPS requests happen in BACKGROUND thread (not UI thread)
         // Background thread is asynchronous task
@@ -144,6 +144,8 @@ public class JSONLoader {
             {
                 Log.e("Food Resource", e.getMessage());
             }
+
+            Log.e("MIKE", allFoodResourceList.toString());
         }
 
     }

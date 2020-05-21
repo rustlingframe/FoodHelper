@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -47,15 +48,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         deleteDatabase("foodresource") ;
 
         mDB = new DBHelper(this);
+
         mAllFoodResourcesList = mDB.getAllFoodResource();
         if(mAllFoodResourcesList.size() == 0){
-            mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
+            //TODO: Get the mAllFoodResourcesList from the Intent (loaded in SplashActivity)
+            mAllFoodResourcesList = getIntent().getParcelableArrayListExtra("AllFoodResourcesList");
             for(FoodResource f : mAllFoodResourcesList){
                 mDB.addFoodResource(f);
             }
         }
 
         /** This is fine*/
+        Log.e("MIKEMAIN", mAllFoodResourcesList.toString());
         mFoodResourceListAdapter = new FoodResourceListAdapter(this, R.layout.foodresource_list_item, mAllFoodResourcesList) ;
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView) ;
         mFoodResourcesListView.setAdapter(mFoodResourceListAdapter) ;

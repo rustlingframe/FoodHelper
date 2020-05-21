@@ -37,6 +37,7 @@ public class Location implements Parcelable {
         this(-1, name, address, city, state, zipCode, phone, latitude, longitude);
     }
 
+
     protected Location(Parcel in) {
         mId = in.readLong();
         mName = in.readString();
@@ -48,6 +49,18 @@ public class Location implements Parcelable {
         mLatitude = in.readDouble();
         mLongitude = in.readDouble();
     }
+
+    public static final Creator<Location> CREATOR = new Creator<Location>() {
+        @Override
+        public Location createFromParcel(Parcel in) {
+            return new Location(in);
+        }
+
+        @Override
+        public Location[] newArray(int size) {
+            return new Location[size];
+        }
+    };
 
     public long getId() {
         return mId;
@@ -168,16 +181,4 @@ public class Location implements Parcelable {
         parcel.writeDouble(mLatitude);
         parcel.writeDouble(mLongitude);
     }
-
-    public static final Creator<Location> CREATOR = new Creator<Location>() {
-        @Override
-        public Location createFromParcel(Parcel in) {
-            return new Location(in);
-        }
-
-        @Override
-        public Location[] newArray(int size) {
-            return new Location[size];
-        }
-    };
 }

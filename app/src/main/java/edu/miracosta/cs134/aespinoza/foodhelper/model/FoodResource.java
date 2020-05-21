@@ -33,8 +33,8 @@ public class FoodResource implements Parcelable {
      * Location object, and an eventDescription
      */
     public FoodResource( long id,String organizationName, String name, String address, String city,
-                        String state, String zipCode, String phone, double latitude, double longitude,
-                        String eventDescription) {
+                         String state, String zipCode, String phone, double latitude, double longitude,
+                         String eventDescription) {
         this.organizationName = organizationName;
         this.location = new Location(id, name, address, city, state, zipCode, phone, latitude, longitude);
         this.eventDescription = eventDescription;
@@ -47,8 +47,8 @@ public class FoodResource implements Parcelable {
      * Location object,  an event Description, check wheter food is free, check wheterer food is discounted
      */
     public FoodResource( long id,   String organizationName,  String name, String address, String city,
-                        String state, String zipCode, String phone, double latitude, double longitude,
-                        String eventDescription, int isDiscounted, int isFree) {
+                         String state, String zipCode, String phone, double latitude, double longitude,
+                         String eventDescription, int isDiscounted, int isFree) {
         this.organizationName = organizationName;
         this.location = new Location(id, name, address, city, state, zipCode, phone, latitude, longitude);
         this.eventDescription = eventDescription;
@@ -65,14 +65,14 @@ public class FoodResource implements Parcelable {
 
 
     protected FoodResource(Parcel in) {
-        organizationName = in.readString();
         location = in.readParcelable(Location.class.getClassLoader());
+        organizationName = in.readString();
         eventDescription = in.readString();
         isDiscounted = in.readInt();
         isFree = in.readInt();
     }
 
-    public static final Parcelable.Creator<FoodResource> CREATOR = new Parcelable.Creator<FoodResource>() {
+    public static final Creator<FoodResource> CREATOR = new Creator<FoodResource>() {
         @Override
         public FoodResource createFromParcel(Parcel in) {
             return new FoodResource(in);
@@ -261,18 +261,21 @@ public class FoodResource implements Parcelable {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeParcelable(location, i);
+        parcel.writeString(organizationName);
+        parcel.writeString(eventDescription);
+        parcel.writeInt(isDiscounted);
+        parcel.writeInt(isFree);
+    }
+
     /**
      * void writeToParcel- writes FoodResource object data into a Parcel
      *
      * @arg Parcel - parcel data will be written to
      * @arg int -
      */
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(organizationName);
-        parcel.writeString(eventDescription);
-        parcel.writeInt(isDiscounted);
-        parcel.writeInt(isFree);
 
-    }
 }
