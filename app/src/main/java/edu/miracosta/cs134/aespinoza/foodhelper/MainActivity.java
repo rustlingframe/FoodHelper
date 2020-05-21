@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,8 +36,8 @@ import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private DBHelper mDB;
     private List<FoodResource> mAllFoodResourcesList;
+    private DBHelper mDB;
     private ListView mFoodResourcesListView;
     private FoodResourceListAdapter mFoodResourceListAdapter;
     //Load a Google Map into our mapsFragment
@@ -49,23 +50,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
-                findFragmentById(R.id.mapsfragment);
-        mapFragment.getMapAsync(this);
-
         mDB = new DBHelper(this);
         mAllFoodResourcesList = mDB.getAllFoodResource();
 
-            if(mAllFoodResourcesList.size() == 0){
+        if(mAllFoodResourcesList.size() == 0 ){
             mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
             for(FoodResource f : mAllFoodResourcesList){
-                mDB.addFoodResource(f);
-            }
+                mDB.addFoodResource(f); }
         }
 
         mFoodResourceListAdapter = new FoodResourceListAdapter(this,R.layout.foodresource_list_item,mAllFoodResourcesList);
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView);
         mFoodResourcesListView.setAdapter(mFoodResourceListAdapter);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
+                findFragmentById(R.id.mapsfragment);
+        mapFragment.getMapAsync(this);
     }
 
 
