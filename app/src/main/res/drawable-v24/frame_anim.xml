@@ -4,9 +4,9 @@
     <!-- Specify duration (milliseconds), 1 second == 1000 ms -->
     <!-- Frame AnimationL sequence of images for specified duration -->
 
-    <item android:drawable="@drawable/porkyPigGoodBye" android:duration="200" />
-    <item android:drawable="@drawable/flippedPorkyPigGoodBye" android:duration="200" />
-    <item android:drawable="@drawable/porkyPigGoodBye" android:duration="200" />
-    <item android:drawable="@drawable/flippedPorkyPigGoodBye" android:duration="200" />
+    <item android:drawable="@drawable/porky_pig_good_bye" android:duration="200" />
+    <item android:drawable="@drawable/flipped_porky_pig_good_bye" android:duration="200" />
+    <item android:drawable="@drawable/porky_pig_good_bye" android:duration="200" />
+    <item android:drawable="@drawable/flipped_porky_pig_good_bye" android:duration="200" />
 
 </animation-list>

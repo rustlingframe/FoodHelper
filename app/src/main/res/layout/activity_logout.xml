@@ -26,5 +26,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/porkyPigGoodBye" />
+        app:srcCompat="@drawable/flipped_porky_pig_good_bye" />
 </androidx.constraintlayout.widget.ConstraintLayout>

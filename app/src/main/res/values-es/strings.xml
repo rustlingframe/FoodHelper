@@ -14,4 +14,12 @@
     <string name="enter_password">"Contraseña"</string>
     <string name="enter_credentials">"Por favor ingrese su información"</string>
     <string name="porky_pig">"Porky Pig despidiéndose"</string>
+    <string name="summary">Elección de configuración</string>
+    <string name="action_settings">Configuración</string>
+
+    <string name="setting_login">Iniciar sesión</string>
+    <string name="setting_logout">Cerrar sesión</string>
+    <string name="setting_sign_up">Regístrate</string>
+    <string name="setting_help">Ayuda</string>
+
 </resources>
