@@ -97,8 +97,9 @@ public class JSONLoader {
                 allFoodResourceList = new ArrayList<>(numberOfFoodResource);
 
                 FoodResource foodResource;
-                String organizationName;
                 long id;
+                String organizationName;
+
                 String name;
                 String address;
                 String city;
@@ -113,9 +114,9 @@ public class JSONLoader {
 
                 for (int i = 0; i < numberOfFoodResource; i++) {
                     JSONObject pmJSON = allFoodResourceJSON.getJSONObject(i);
-
-                    organizationName = pmJSON.getString("organizationName");
                     id = pmJSON.getLong("id");
+                    organizationName = pmJSON.getString("organizationName");
+
                     name = pmJSON.getString("name");
                     address = pmJSON.getString("address");
                     city = pmJSON.getString("city");
@@ -135,7 +136,7 @@ public class JSONLoader {
                     //*******WILL IMPLEMENT WHEN THE CODE IS COMPLETE AND FIND IMAGES ONLINE
                     //imgUri = Uri.parse(IMG_URI_BASE + String.format("%03d", id) + ".png");
 
-                    foodResource = new FoodResource(organizationName,id,name,address,city,state,zipCode,phoneNumber,latitude,
+                    foodResource = new FoodResource(   id, organizationName,name,address,city,state,zipCode,phoneNumber,latitude,
                             longitude,description,isDiscounted,isFree);
 
                     allFoodResourceList.add(foodResource);
