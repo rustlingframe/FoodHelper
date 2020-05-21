@@ -53,8 +53,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(mAllFoodResourcesList.size() == 0){
             mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
             for(FoodResource f : mAllFoodResourcesList)
+            {
                 mDB.addFoodResource(f);
+                System.out.println(f) ;
+            }
+            System.out.println("worked");
         }
+
+
 
         mFoodResourceListAdapter = new FoodResourceListAdapter(this,R.layout.foodresource_list_item,mAllFoodResourcesList);
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView);

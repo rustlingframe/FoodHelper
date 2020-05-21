@@ -7,4 +7,5 @@
         the app!</string>
     <string name="go_to_main_activity">Return</string>
     <string name="how_to_use">Who knows!?</string>
+    <string name="sign_out_message">Take care!</string>
 </resources>
