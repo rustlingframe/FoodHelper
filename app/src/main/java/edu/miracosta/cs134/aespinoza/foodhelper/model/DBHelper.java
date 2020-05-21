@@ -23,13 +23,13 @@ public class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //TASK: DEFINE THE DATABASE VERSION AND NAME  (DATABASE CONTAINS MULTIPLE TABLES)
-    static final String DATABASE_NAME = "FoodResource";
+    static final String DATABASE_NAME = "foodresource";
     private static final int DATABASE_VERSION = 1;
 
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE CAFFEINE LOCATIONS TABLE
     private static final String FOODRESOURCE_TABLE = "foodresource";
     private static final String FIELD_ORGANIZATION_NAME = "organizationName";
-    private static final String FOODRESOURCE_KEY_FIELD_ID = "id";
+    private static final String FOODRESOURCE_KEY_FIELD_ID = "_id";
     private static final String FIELD_NAME = "name";
     private static final String FIELD_ADDRESS = "address";
     private static final String FIELD_CITY= "city";
@@ -127,23 +127,27 @@ public class DBHelper extends SQLiteOpenHelper {
                 FOODRESOURCE_TABLE,
                 new String[]{FOODRESOURCE_KEY_FIELD_ID,
                         FIELD_ORGANIZATION_NAME,
-
                         FIELD_NAME,
+
                         FIELD_ADDRESS,
                         FIELD_CITY,
                         FIELD_STATE,
+
                         FIELD_ZIP_CODE,
                         FIELD_PHONE,
                         FIELD_LAT,
+
                         FIELD_LONG,
                         FIELD_DESCRIPTION,
                         FIELD_IS_DISCOUNTED,
+
                         FIELD_IS_FREE},
                 null,
                 null,
                 null, null, null, null);
 
         //COLLECT EACH ROW IN THE TABLE
+        System.out.println("twerk");
         if (cursor.moveToFirst()) {
             do {
                  FoodResource foodResource =
@@ -161,6 +165,8 @@ public class DBHelper extends SQLiteOpenHelper {
                                             cursor.getString(10),
                                             cursor.getInt(11),
                                             cursor.getInt(12));
+
+                System.out.println(foodResource + "123123123123132123132123123123");
 
                 foodResourceList.add(foodResource);
             } while (cursor.moveToNext());
