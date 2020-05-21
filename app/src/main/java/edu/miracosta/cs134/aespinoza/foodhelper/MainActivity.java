@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        deleteDatabase("foodresource") ;
+
         mDB = new DBHelper(this);
         mAllFoodResourcesList = mDB.getAllFoodResource();
         if(mAllFoodResourcesList.size() == 0){
@@ -53,11 +55,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         /** This is fine*/
-        mFoodResourceListAdapter = new FoodResourceListAdapter(this, R.layout.foodresource_list_item, mAllFoodResourcesList);
-        mFoodResourcesListView = findViewById(R.id.foodResourcesListView);
-        mFoodResourcesListView.setAdapter(mFoodResourceListAdapter);
-
-        mFoodResourceListAdapter.notifyDataSetChanged();
+        mFoodResourceListAdapter = new FoodResourceListAdapter(this, R.layout.foodresource_list_item, mAllFoodResourcesList) ;
+        mFoodResourcesListView = findViewById(R.id.foodResourcesListView) ;
+        mFoodResourcesListView.setAdapter(mFoodResourceListAdapter) ;
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
                 findFragmentById(R.id.mapsfragment);
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         CameraPosition position = new CameraPosition.Builder().target(oc4800).zoom(15f).build();
         CameraUpdate update = CameraUpdateFactory.newCameraPosition(position);
         map.moveCamera(update);
-
     }
 
 

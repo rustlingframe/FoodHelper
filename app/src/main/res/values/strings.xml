@@ -6,6 +6,12 @@
         food to eat. In order to use the app to the fullest we’ve also included a guide to get around
         the app!</string>
     <string name="go_to_main_activity">Return</string>
-    <string name="how_to_use">Who knows!?</string>
+    <string name="how_to_use">At the start the app shows you both free food resources and discounted
+        food resources. If you click on the gear icon then you will be able to limit what shows up
+    based on whether the resources are free or discounted. \nClicking on a one of the items will
+    take you to a screen with more details pertaining to the item. \nThe sign out button will end
+    your session.</string>
     <string name="sign_out_message">Take care!</string>
+    <string name="login_button">Login</string>
+    <string name="reset_password_button">Login</string>
 </resources>
