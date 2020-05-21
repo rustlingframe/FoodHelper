@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference
-        android:entries="@array/setting_action"
-        android:entryValues="@array/setting_action"
-        android:key="pref_quiz_type"
-        android:title="Quiz Type"
-        android:summary="@string/summary"
-        android:persistent="true"
-        android:defaultValue="Superhero Name"/>
+    <Preference
+        android:key="login"
+        android:title="Login"
+        android:summary="@string/setting_login"/>
+    <Preference
+        android:key="logout"
+        android:title="Logout"
+        android:summary="@string/setting_logout"/>
+    <Preference
+        android:key="sign_up"
+        android:title="Sign Up"
+        android:summary="@string/setting_sign_up"/>
+    <Preference
+        android:key="help"
+        android:title="Help"
+        android:summary="@string/setting_help"/>
 </PreferenceScreen>
 

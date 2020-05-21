@@ -35,8 +35,6 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
         mContext = c;
         mResourceId = rId;
         mFoodResourceList = foodResources;
-
-        System.out.println("owo");
     }
 
     /**
@@ -50,10 +48,6 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
     public View getView(int pos, View convertView, ViewGroup parent)
     {
         final FoodResource selectedFoodResource = mFoodResourceList.get(pos);
-
-        System.out.println(getCount() + "notices bulge");
-
-        System.out.println("uwu");
         LayoutInflater inflater =
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(mResourceId, null);

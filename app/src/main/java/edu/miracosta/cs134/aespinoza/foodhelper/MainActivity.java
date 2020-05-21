@@ -1,12 +1,18 @@
 package edu.miracosta.cs134.aespinoza.foodhelper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
+    private static final String SETTINGS_CHOICE = "settings_choice" ;
+    private String settingsChoice = "nothing" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +76,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
                 findFragmentById(R.id.mapsfragment);
         mapFragment.getMapAsync(this);
+
+        PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
+
     }
 
 
@@ -118,4 +132,49 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     {
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_settings,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    SharedPreferences.OnSharedPreferenceChangeListener mSharedPreferenceChangeListener =
+            new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+                    switch (key)
+                    {
+                        case "login":
+                            settingsChoice = sharedPreferences.getString("login", settingsChoice);
+                            Toast.makeText(MainActivity.this,"login",Toast.LENGTH_SHORT).show();
+                            break;
+                        case "logout":
+                            settingsChoice = sharedPreferences.getString("logout", settingsChoice);
+                            Toast.makeText(MainActivity.this,"logout",Toast.LENGTH_SHORT).show();
+                            break;
+                        case "sign_up":
+                            settingsChoice = sharedPreferences.getString("sign_up", settingsChoice);
+                            Toast.makeText(MainActivity.this,"sign up",Toast.LENGTH_SHORT).show();
+                            break;
+                        case "help":
+                            settingsChoice = sharedPreferences.getString("help", settingsChoice);
+                            Toast.makeText(MainActivity.this,"help",Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            };
+
 }

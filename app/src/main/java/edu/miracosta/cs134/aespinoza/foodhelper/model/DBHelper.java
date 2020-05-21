@@ -147,7 +147,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 null, null, null, null);
 
         //COLLECT EACH ROW IN THE TABLE
-        System.out.println("twerk");
         if (cursor.moveToFirst()) {
             do {
                  FoodResource foodResource =
@@ -164,8 +163,6 @@ public class DBHelper extends SQLiteOpenHelper {
                                             cursor.getString(10),
                                             cursor.getInt(11),
                                             cursor.getInt(12));
-
-                System.out.println(foodResource + "123123123123132123132123123123");
 
                 foodResourceList.add(foodResource);
             } while (cursor.moveToNext());
