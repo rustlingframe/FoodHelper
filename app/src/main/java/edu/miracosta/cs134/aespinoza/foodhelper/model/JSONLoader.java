@@ -81,7 +81,7 @@ public class JSONLoader {
             {
                 return readJSONFromUrl(JSON_URI);
             } catch (Exception e) {
-                Log.e("JSONLoader", "Error loading JSON from " + JSON_URI + e.getMessage()) ;
+                Log.e("JSONLoader", "Error loading JSON from " + JSON_URI +" "+ e.getMessage()) ;
                 return null ;
             }
         }
@@ -105,14 +105,15 @@ public class JSONLoader {
                 double latitude;
                 double longitude;
                 String description;
-                boolean isDiscounted;
-                boolean isFree;
+                int isDiscounted;
+                int isFree;
 
                 for (int i = 0; i < numberOfFoodResource; i++) {
                     JSONObject pmJSON = allFoodResourceJSON.getJSONObject(i);
+
                     organizationName = pmJSON.getString("organizationName");
-                    name = pmJSON.getString("name");
                     id = pmJSON.getLong("id");
+                    name = pmJSON.getString("name");
                     address = pmJSON.getString("address");
                     city = pmJSON.getString("city");
                     state = pmJSON.getString("state");
@@ -121,8 +122,8 @@ public class JSONLoader {
                     latitude = pmJSON.getDouble("latitude");
                     longitude = pmJSON.getDouble("longitude");
                     description = pmJSON.getString("description");
-                    isDiscounted = pmJSON.getBoolean("isDiscpunted");
-                    isFree = pmJSON.getBoolean("isFree");
+                    isDiscounted = pmJSON.getInt("isDiscounted");
+                    isFree = pmJSON.getInt("isFree");
 
                     // Rather than use the .png files from JSON (too small), I decided to grab the best quality
                     // images from the source: assets.pokemon.com

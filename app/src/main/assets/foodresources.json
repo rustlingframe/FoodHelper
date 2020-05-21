@@ -11,8 +11,8 @@
       "latitude": "33.191551",
       "longitude": "-117.303615",
       "description": "Test Description",
-      "isDiscounted": "true",
-      "isFree": "false"
+      "isDiscounted": "1",
+      "isFree": "0"
   }, {
     "organizationName":"FoodResourceTestObject2",
     "id": 2,
@@ -25,8 +25,8 @@
     "latitude": "45.191551",
     "longitude": "200.303615",
     "description": "Test Description2",
-    "isDiscounted": "false",
-    "isFree": "true"
+    "isDiscounted": "0",
+    "isFree": "1"
     }
   ]
 }

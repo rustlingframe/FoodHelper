@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //TASK: DEFINE THE DATABASE VERSION AND NAME  (DATABASE CONTAINS MULTIPLE TABLES)
-    static final String DATABASE_NAME = "FoodResource";
+    public static final String DATABASE_NAME = "FoodResource";
     private static final int DATABASE_VERSION = 1;
 
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE CAFFEINE LOCATIONS TABLE
@@ -61,8 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 + FIELD_LAT + " REAL,"
                 + FIELD_LONG + " REAL,"
                 + FIELD_DESCRIPTION + " TEXT,"
-                + FIELD_IS_DISCOUNTED+" BIT,"
-                +FIELD_IS_FREE+" BIT"
+                + FIELD_IS_DISCOUNTED+" INTEGER,"
+                +FIELD_IS_FREE+" INTEGER"
                 + ")";
         database.execSQL(createQuery);
 
@@ -79,7 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //********** LOCATIONS TABLE OPERATIONS:  ADD, GETALL, DELETE
 
-    public void addPokemon(FoodResource foodResource) {
+    public void addFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -142,82 +142,125 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                  FoodResource foodResource =
-                        new FoodResource(cursor.getString(0),
-                                cursor.getLong(1),
-                                cursor.getString(2),
-                                cursor.getString(3),
-                                cursor.getString(4),
-                                cursor.getString(5),
-                                cursor.getString(6),
-                                cursor.getString(7),
-                                cursor.getDouble(8),
-                                cursor.getDouble(9),
-                                cursor.getString(10),
-                                cursor.getString(11),
-                                cursor.getInt(12),
-                                cursor.getInt(13));
+                         new FoodResource(cursor.getString(0),
+                                            cursor.getLong(1),
+                                            cursor.getString(2),
+                                            cursor.getString(3),
+                                            cursor.getString(4),
+                                            cursor.getString(5),
+                                            cursor.getString(6),
+                                            cursor.getString(7),
+                                            cursor.getDouble(8),
+                                            cursor.getDouble(9),
+                                            cursor.getString(10),
+                                            cursor.getInt(11),
+                                            cursor.getInt(12));
 
-                pokemonList.add(pokemon);
+                foodResourceList.add(foodResource);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return pokemonList;
+        return foodResourceList;
     }
 
-    public void deletePokemon(Pokemon pokemon) {
+    public void deleteFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // DELETE THE TABLE ROW
-        db.delete(POKEMON_TABLE, POKEMON_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(pokemon.getId())});
+        db.delete(FOODRESOURCE_TABLE, FOODRESOURCE_KEY_FIELD_ID + " = ?",
+                new String[]{String.valueOf(foodResource.getLocation().getId())});
         db.close();
     }
 
-    public void deleteAllPokemon() {
+    public void deleteAllFoodResource() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(POKEMON_TABLE, null, null);
+        db.delete(FOODRESOURCE_TABLE, null, null);
         db.close();
     }
 
-    public Pokemon getPokemon(int id) {
+    public FoodResource getFoodResource(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
-                POKEMON_TABLE,
-                new String[]{POKEMON_KEY_FIELD_ID,
-                        FIELD_NAME,
-                        FIELD_IMG_URI,
-                        FIELD_TYPE,
-                        FIELD_HEIGHT,
-                        FIELD_WEIGHT,
-                        FIELD_CANDY_COUNT,
-                        FIELD_EGG,
-                        FIELD_SPAWN_CHANCE,
-                        FIELD_AVERAGE_SPAWNS,
-                        FIELD_SPAWN_TIME,
-                        FIELD_WEAKNESSES},
-                POKEMON_KEY_FIELD_ID + "=?",
-                new String[]{String.valueOf(id)},
-                null, null, null, null);
+                Cursor cursor = db.query(
+                        FOODRESOURCE_TABLE,
+                        new String[]{FIELD_ORGANIZATION_NAME,
+                                FOODRESOURCE_KEY_FIELD_ID,
+                                FIELD_NAME,
+                                FIELD_ADDRESS,
+                                FIELD_CITY,
+                                FIELD_STATE,
+                                FIELD_ZIP_CODE,
+                                FIELD_PHONE,
+                                FIELD_LAT,
+                                FIELD_LONG,
+                                FIELD_DESCRIPTION,
+                                FIELD_IS_DISCOUNTED,
+                                FIELD_IS_FREE},
+                        FOODRESOURCE_KEY_FIELD_ID+"=?",
+                        new String[]{String.valueOf(id)},
+                        null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        Pokemon pokemon =
-                new Pokemon(cursor.getLong(0),
-                        cursor.getString(1),
-                        Uri.parse(cursor.getString(2)),
-                        csvToArray(cursor.getString(3)),
+        FoodResource foodResource =
+                new FoodResource(cursor.getString(0),
+                        cursor.getLong(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
                         cursor.getString(4),
                         cursor.getString(5),
-                        cursor.getInt(6),
+                        cursor.getString(6),
                         cursor.getString(7),
                         cursor.getDouble(8),
                         cursor.getDouble(9),
                         cursor.getString(10),
-                        csvToArray(cursor.getString(11)));
+                        cursor.getInt(11),
+                        cursor.getInt(12));
         cursor.close();
         db.close();
-        return pokemon;
+        return foodResource;
+    }
+
+    public boolean importFoodResourcesFromCSV(String csvFileName) {
+        AssetManager manager = mContext.getAssets();
+        InputStream inStream;
+        try {
+            inStream = manager.open(csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
+        String line;
+        try {
+            while ((line = buffer.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length != 9) {
+                    Log.d("FoodResource", "Skipping Bad CSV Row: " + Arrays.toString(fields));
+                    continue;
+                }
+                String organizationName = fields[0].trim();
+                long id = Long.parseLong(fields[1].trim());
+                String name = fields[2].trim();
+                String address = fields[3].trim();
+                String city = fields[4].trim();
+                String state = fields[5].trim();
+                String zipCode = fields[6].trim();
+                String phone = fields[7].trim();
+                double latitude = Double.parseDouble(fields[8].trim());
+                double longitude = Double.parseDouble(fields[9].trim());
+                String eventDescription = fields[10].trim();
+                int isDiscounted = Integer.parseInt(fields[11].trim());
+                int isFree = Integer.parseInt(fields[12].trim());
+
+                addFoodResource(new FoodResource(organizationName,id, name, address, city, state, zipCode, phone, latitude, longitude,eventDescription,isDiscounted,isFree));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
