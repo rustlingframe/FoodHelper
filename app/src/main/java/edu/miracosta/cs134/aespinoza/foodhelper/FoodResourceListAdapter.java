@@ -1,4 +1,4 @@
-package edu.miracosta.cs134.aespinoza.foodhelper.model;
+package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.miracosta.cs134.aespinoza.foodhelper.R;
+import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
 
 /**
  * Helper class to provide custom adapter for the <code>Location</code> list.
@@ -21,10 +21,8 @@ import edu.miracosta.cs134.aespinoza.foodhelper.R;
 public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
     private Context mContext;
-    private List<FoodResource> mFoodResourceList = new ArrayList<>();
+    private List<FoodResource> mFoodResourceList ;
     private int mResourceId;
-
-
 
     /**
      * Creates a new <code>LocationsListAdapter</code> given a mContext, resource id and list of locations.
@@ -52,7 +50,6 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
     {
         final FoodResource selectedFoodResource = mFoodResourceList.get(pos);
 
-
         LayoutInflater inflater =
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(mResourceId, null);
@@ -66,8 +63,10 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
         TextView foodResourceListOrganizationNameTextView =
                 view.findViewById(R.id.foodResourceListOrganizationNameTextView);
+
         TextView foodResourceListAddressTextView =
                 view.findViewById(R.id.foodResourceListAddressTextView);
+
         TextView foodResourceListPhoneTextView =
                 view.findViewById(R.id.foodResourceListPhoneTextView);
 
@@ -77,6 +76,7 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
         foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
         foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());
 
+        notifyDataSetChanged();
         return view;
     }
 }
