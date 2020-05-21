@@ -13,4 +13,5 @@
     <string name="enter_email">"Correo electrónico "</string>
     <string name="enter_password">"Contraseña "</string>
     <string name="enter_credentials">"Por favor ingrese su información "</string>
+    <string name="porky_pig">"Porky Pig despidiéndose"</string>
 </resources>

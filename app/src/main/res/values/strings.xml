@@ -12,4 +12,5 @@
     <string name="enter_password">Password</string>
     <string name="enter_credentials">Please enter your information</string>
     <string name="temporary">Animated goodbye</string>
+    <string name="porky_pig">Porky Pig waving goodbye</string>
 </resources>

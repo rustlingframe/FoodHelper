@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Specify duration (milliseconds), 1 second == 1000 ms -->
+    <!-- Frame AnimationL sequence of images for specified duration -->
+
+    <item android:drawable="@drawable/porkyPigGoodBye" android:duration="200" />
+    <item android:drawable="@drawable/flippedPorkyPigGoodBye" android:duration="200" />
+    <item android:drawable="@drawable/porkyPigGoodBye" android:duration="200" />
+    <item android:drawable="@drawable/flippedPorkyPigGoodBye" android:duration="200" />
+
+</animation-list>
