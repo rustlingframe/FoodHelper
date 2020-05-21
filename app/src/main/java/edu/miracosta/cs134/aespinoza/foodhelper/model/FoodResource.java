@@ -9,8 +9,8 @@ import java.sql.Time;
 import java.util.Date;
 public class FoodResource implements Parcelable {
 
-    String organizationName;
     Location location;
+    String organizationName;
     Date startDate;
     Date endDate;//optional for project for specific events that occur at random
     Time startTime;
@@ -32,7 +32,7 @@ public class FoodResource implements Parcelable {
      * with the name of the organization, the data for creating a
      * Location object, and an eventDescription
      */
-    public FoodResource( long id,    String organizationName, String name, String address, String city,
+    public FoodResource( long id,String organizationName, String name, String address, String city,
                         String state, String zipCode, String phone, double latitude, double longitude,
                         String eventDescription) {
         this.organizationName = organizationName;

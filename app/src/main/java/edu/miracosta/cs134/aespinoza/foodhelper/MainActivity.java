@@ -2,6 +2,7 @@ package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -98,7 +99,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void viewFoodResourcesDetails(View v)
     {
+        FoodResource selectedFoodResource = (FoodResource) v.getTag();
 
+        Intent detailsIntent = new Intent(this,FoodResourceDetails.class);
+        detailsIntent.putExtra("SelectedFoodResource",selectedFoodResource);
+        startActivity(detailsIntent);
     }
 
     /**

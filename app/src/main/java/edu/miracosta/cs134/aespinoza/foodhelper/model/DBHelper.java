@@ -152,8 +152,7 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                  FoodResource foodResource =
                          new FoodResource(cursor.getLong(0),
-                                 cursor.getString(1),
-
+                                            cursor.getString(1),
                                             cursor.getString(2),
                                             cursor.getString(3),
                                             cursor.getString(4),
@@ -197,7 +196,6 @@ public class DBHelper extends SQLiteOpenHelper {
                         FOODRESOURCE_TABLE,
                         new String[]{FOODRESOURCE_KEY_FIELD_ID,
                                 FIELD_ORGANIZATION_NAME,
-
                                 FIELD_NAME,
                                 FIELD_ADDRESS,
                                 FIELD_CITY,
