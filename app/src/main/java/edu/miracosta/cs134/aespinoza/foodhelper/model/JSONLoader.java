@@ -40,6 +40,8 @@ public class JSONLoader {
         DownloadJSONTask task = new DownloadJSONTask() ;
         task.execute(JSON_URI) ;
 
+        System.out.println(allFoodResourceList.get(0).getOrganizationName());
+
         return allFoodResourceList;
     }
 
@@ -92,6 +94,8 @@ public class JSONLoader {
             try {
                 JSONArray allFoodResourceJSON = jsonRootObject.getJSONArray("foodresource");
                 int numberOfFoodResource = allFoodResourceJSON.length();
+                allFoodResourceList = new ArrayList<>(numberOfFoodResource);
+
                 FoodResource foodResource;
                 String organizationName;
                 long id;

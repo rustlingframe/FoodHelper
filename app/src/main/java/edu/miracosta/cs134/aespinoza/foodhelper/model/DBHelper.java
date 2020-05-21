@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE CAFFEINE LOCATIONS TABLE
     private static final String FOODRESOURCE_TABLE = "foodresource";
-    public static final String FIELD_ORGANIZATION_NAME = "organizationName";
+    private static final String FIELD_ORGANIZATION_NAME = "organizationName";
     private static final String FOODRESOURCE_KEY_FIELD_ID = "id";
     private static final String FIELD_NAME = "name";
     private static final String FIELD_ADDRESS = "address";

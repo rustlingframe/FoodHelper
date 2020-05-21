@@ -1,4 +1,4 @@
-package edu.miracosta.cs134.aespinoza.foodhelper.model;
+package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.miracosta.cs134.aespinoza.foodhelper.R;
+import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
+
 
 /**
  * Helper class to provide custom adapter for the <code>Location</code> list.
@@ -72,11 +73,10 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
                 view.findViewById(R.id.foodResourceListPhoneTextView);
 
         foodResourceListLinearLayout.setTag(selectedFoodResource);
-
-        foodResourceListLinearLayout.setTag(selectedFoodResource);
+        foodResourceListImageView.setImageResource(R.drawable.ic_launcher_background);
         foodResourceListOrganizationNameTextView.setText(selectedFoodResource.getOrganizationName());
-        foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
-        foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());
+        //foodResourceListAddressTextView.setText(selectedFoodResource.getLocation().getFullAddress());
+        //foodResourceListPhoneTextView.setText(selectedFoodResource.getLocation().getPhone());
 
         return view;
     }

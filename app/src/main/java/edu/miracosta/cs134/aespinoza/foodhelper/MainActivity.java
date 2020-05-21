@@ -26,7 +26,6 @@ import java.util.List;
 
 import edu.miracosta.cs134.aespinoza.foodhelper.model.DBHelper;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
-import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResourceListAdapter;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
 
 /**
