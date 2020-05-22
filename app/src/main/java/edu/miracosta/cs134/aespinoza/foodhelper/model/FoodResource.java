@@ -7,6 +7,13 @@ import androidx.annotation.RequiresApi;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.Objects;
+
+/**
+ * FoodResource class made to represent a source of free or discounted food for those in need.
+ * @Author Alvaro Espinoza Merida
+ * Project - Final Project CS134
+ */
 public class FoodResource implements Parcelable {
 
     Location location;
@@ -256,11 +263,20 @@ public class FoodResource implements Parcelable {
                 "Event Description=" + eventDescription;
     }
 
+    /**
+     * Returns a description of contents
+     * @return int value of content.
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * Allows the Object to be passed along easily in intents.
+     * @param parcel Parcelable item
+     * @param i id
+     */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
 
@@ -269,6 +285,32 @@ public class FoodResource implements Parcelable {
         parcel.writeString(eventDescription);
         parcel.writeInt(isDiscounted);
         parcel.writeInt(isFree);
+    }
+
+    /**
+     * Used to compare Two FoodResources for equivalence
+     * @param o object to compare to
+     * @return true or false
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FoodResource that = (FoodResource) o;
+        return isDiscounted == that.isDiscounted &&
+                isFree == that.isFree &&
+                location.equals(that.location) &&
+                organizationName.equals(that.organizationName) &&
+                startDate.equals(that.startDate) &&
+                endDate.equals(that.endDate) &&
+                startTime.equals(that.startTime) &&
+                endTime.equals(that.endTime) &&
+                eventDescription.equals(that.eventDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, organizationName, startDate, endDate, startTime, endTime, eventDescription, isDiscounted, isFree);
     }
 
     /**

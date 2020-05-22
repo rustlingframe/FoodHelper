@@ -28,8 +28,8 @@ import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
 
 /**
  * MainActivity, the first real screen for the app. Loads in the google map, the settings,
- * Project - Final Project CS134
  * @Author Alvaro Espinoza Merida & Alfredo Hernandez
+ * Project - Final Project CS134
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 

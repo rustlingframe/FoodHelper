@@ -19,8 +19,10 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Class loads Pokemon data from a formatted JSON (JavaScript Object Notation) file.
- * Populates data model (Pokemon) with data.
+ * Class loads FoodResource data from a formatted JSON (JavaScript Object Notation) file.
+ * Populates data model (FoodResource) with data.
+ * @Author Alvaro Espinoza Merida
+ *  * Project - Final Project CS134
  */
 public class JSONLoader {
 
@@ -29,13 +31,12 @@ public class JSONLoader {
 
     private static ArrayList<FoodResource> allFoodResourceList ;
 
-    // DONE: Add a static method that reads the notusedpokedex.json file directly from the web
-    // DONE: instead of using local AssetManager.  The pokedex can be found here:
-    // DONE: https://github.com/Biuni/PokemonGO-Pokedex/blob/master/pokedex.json
+    /**
+     * Loads a JSON file from the internet and fills up the list of FoodResources
+     * @return filled FoodResource list
+     */
     public static ArrayList<FoodResource> loadJSONFromHTTP() {
         allFoodResourceList = new ArrayList<>() ;
-        // Android enforces that HTTP/HTTPS requests happen in BACKGROUND thread (not UI thread)
-        // Background thread is asynchronous task
 
         DownloadJSONTask task = new DownloadJSONTask() ;
         task.execute(JSON_URI) ;
@@ -43,7 +44,12 @@ public class JSONLoader {
         return allFoodResourceList ;
     }
 
-
+    /**
+     * Reads in puts all contents into a single StringBuilder
+     * @param rd given reader
+     * @return All contents in a single String
+     * @throws IOException Can fail at reading in a file.
+     */
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
@@ -53,6 +59,13 @@ public class JSONLoader {
         return sb.toString();
     }
 
+    /**
+     * Reads in JSON file from a url.
+     * @param url location of the JSON file
+     * @return Root Json object
+     * @throws IOException can fail to read the file
+     * @throws JSONException catch all other exceptions
+     */
     private static JSONObject readJSONFromUrl(String url) throws IOException, JSONException {
         InputStream is = new URL(url).openStream();
         try {
@@ -82,9 +95,11 @@ public class JSONLoader {
                 return null ;
             }
         }
-        // After JSONObject retrieved, parse it, create Pokemon object and add object to List
-        // ctrl + o
 
+        /**
+         * Reads in all JSON objects
+         * @param jsonRootObject the name of the JSON file
+         */
         @Override
         protected void onPostExecute(JSONObject jsonRootObject) {
             try {
@@ -127,13 +142,6 @@ public class JSONLoader {
                     isDiscounted = pmJSON.getInt("isDiscounted");
                     isFree = pmJSON.getInt("isFree");
 
-                    // Rather than use the .png files from JSON (too small), I decided to grab the best quality
-                    // images from the source: assets.pokemon.com
-                    // The schema being used is take the Pokemon id (e.g. 1) and pad it with zeros to make a
-                    // 3-digit file name, e.g. 001.png
-                    //*******WILL IMPLEMENT WHEN THE CODE IS COMPLETE AND FIND IMAGES ONLINE
-                    //imgUri = Uri.parse(IMG_URI_BASE + String.format("%03d", id) + ".png");
-
                     foodResource = new FoodResource(id,organizationName,name,address,city,state,zipCode,phoneNumber,latitude,
                             longitude,description,isDiscounted,isFree);
 
@@ -144,9 +152,8 @@ public class JSONLoader {
             {
                 Log.e("Food Resource", e.getMessage());
             }
-
+            // Thank you Mr.Paulding!
             Log.e("MIKE", allFoodResourceList.toString());
         }
-
     }
 }

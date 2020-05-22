@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * DBHelper class used to keep track of FoodResources in a neat table.
+ * @Author Alvaro Espinoza Merida & Alfredo Hernandez
+ * Project - Final Project CS134
+ */
 public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
@@ -42,11 +47,19 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_IS_DISCOUNTED = "isDiscounted";
     private static final String FIELD_IS_FREE = "isFree";
 
+    /**
+     * Default constructor
+     * @param context current context
+     */
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
     }
 
+    /**
+     * Creates a query upon creation of DB
+     * @param database dataBase to fill up
+     */
     @Override
     public void onCreate(SQLiteDatabase database) {
         String createQuery = "CREATE TABLE " + FOODRESOURCE_TABLE + "("
@@ -68,6 +81,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * Used to upgrade the DB's version
+     * @param database given database
+     * @param oldVersion old version
+     * @param newVersion new version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase database,
                           int oldVersion,
@@ -79,6 +98,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //********** LOCATIONS TABLE OPERATIONS:  ADD, GETALL, DELETE
 
+    /**
+     * Adds a FoodResource to the DataBase
+     * @param foodResource FoodResource to be added
+     */
     public void addFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -107,19 +130,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    private String arrayToCSV(String[] array)
-    {
-        String csv = "";
-        for (int i = 0; i < array.length; i++)
-            csv += ((i == array.length-1) ? array[i] : array[i] + ",");
-        return csv;
-    }
-
-    private String[] csvToArray(String csv)
-    {
-        return csv.split(",");
-    }
-
+    /**
+     * Returns all of the FoodResources in the database
+     * @return all FoodResources
+     */
     public List<FoodResource> getAllFoodResource() {
         List<FoodResource> foodResourceList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -172,6 +186,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return foodResourceList;
     }
 
+    /**
+     * Deletes a given FoodResource from the Database
+     * @param foodResource to be deleted
+     */
     public void deleteFoodResource(FoodResource foodResource) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -181,12 +199,20 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Deletes all FoodResources in the Database
+     */
     public void deleteAllFoodResource() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(FOODRESOURCE_TABLE, null, null);
         db.close();
     }
 
+    /**
+     * Returns a FoodResource based on it's id
+     * @param id of FoodResource
+     * @return the deleted FoodResource
+     */
     public FoodResource getFoodResource(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
                 Cursor cursor = db.query(
@@ -229,48 +255,5 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return foodResource;
-    }
-
-    public boolean importFoodResourcesFromCSV(String csvFileName) {
-        AssetManager manager = mContext.getAssets();
-        InputStream inStream;
-        try {
-            inStream = manager.open(csvFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
-        String line;
-        try {
-            while ((line = buffer.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length != 9) {
-                    Log.d("FoodResource", "Skipping Bad CSV Row: " + Arrays.toString(fields));
-                    continue;
-                }
-                long id = Long.parseLong(fields[0].trim());
-                String organizationName = fields[1].trim();
-
-                String name = fields[2].trim();
-                String address = fields[3].trim();
-                String city = fields[4].trim();
-                String state = fields[5].trim();
-                String zipCode = fields[6].trim();
-                String phone = fields[7].trim();
-                double latitude = Double.parseDouble(fields[8].trim());
-                double longitude = Double.parseDouble(fields[9].trim());
-                String eventDescription = fields[10].trim();
-                int isDiscounted = Integer.parseInt(fields[11].trim());
-                int isFree = Integer.parseInt(fields[12].trim());
-
-                addFoodResource(new FoodResource(id,   organizationName, name, address, city, state, zipCode, phone, latitude, longitude,eventDescription,isDiscounted,isFree));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 }
