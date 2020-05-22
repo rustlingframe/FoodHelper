@@ -17,6 +17,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * LoginActivity used to login the user into the app.
+ * @Author Alfredo Hernandez Jr
+ * CS134 Final Project
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "Login";
@@ -76,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Is called after the loginButton is pressed.
-     * @param email
-     * @param password
+     * @param email first parameter for a user to sign in
+     * @param password secret code only the user can enter
      */
     private void signIn(String email, String password)
     {
@@ -101,6 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     * Is called when the user presses and calls signIn to attempt to login the user.
+     * @param v current context
+     */
     public void handleLoginButton(View v)
     {
         if(v.getId() == R.id.loginButton)

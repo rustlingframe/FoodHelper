@@ -11,7 +11,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+/**
+ * LogoutActivity used to log the user out of the app.
+ * @Author Alfredo Hernandez Jr
+ * CS134 Final Project
+ */
 public class LogoutActivity extends AppCompatActivity {
 
     // Frame Animation
@@ -21,6 +25,10 @@ public class LogoutActivity extends AppCompatActivity {
     private FirebaseAuth auth ;
     private FirebaseUser user ;
 
+    /**
+     * Called upon when activity first starts, creates an animation of porky pig waving goodbye.
+     * @param savedInstanceState current launch of app.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +51,14 @@ public class LogoutActivity extends AppCompatActivity {
             frameAnim.start() ;
         }
 
-        //TODO (2): Initialize Firebase authentication
         auth = FirebaseAuth.getInstance() ;
-        //TODO (3): Initialize current user
         user = auth.getCurrentUser() ;
     }
 
+    /**
+     * Called when the user presses the logoutButton, sends the user back to MainActivity.
+     * @param v current view
+     */
     public void logoutButton(View v)
     {
         auth.signOut();

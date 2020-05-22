@@ -16,6 +16,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * SignUpActivity used to register an account from the user for the app.
+ * @Author Alfredo Hernandez Jr
+ * CS134 Final Project
+ */
 public class SignUpActivity extends AppCompatActivity {
 
     private static final String TAG = "SignUp";
@@ -25,6 +30,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    /**
+     * Called when the activity first starts, takes in the user's input to attempt to sign them up.
+     * @param savedInstanceState current context
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
         mEmailEditText = findViewById(R.id.signUpEmailEditText);
         mPasswordEditText = findViewById(R.id.signUpPasswordEditText);
 
-
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -43,13 +51,19 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Takes the user back to the MainActivity.
+     */
     public void goToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         finish();
         startActivity(intent);
     }
 
-
+    /**
+     * Checks both the email and password fields to see if valid input has been entered.
+     * @return true or false
+     */
     private boolean isValidInput() {
         if (mEmailEditText.getText().toString().equals("") ||
                 mPasswordEditText.getText().toString().equals("")) {
@@ -58,6 +72,11 @@ public class SignUpActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Attempts to create an account for the user based on their input.
+     * @param email user's email
+     * @param password user's password
+     */
     private void createAccount(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -78,6 +97,10 @@ public class SignUpActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Is called when the sign uo button is pressed, calls the createAccount using the input from the user.
+     * @param v current view
+     */
     public void handleSignUp(View v) {
         if (v.getId() == R.id.signUpButton) {
             createAccount(mEmailEditText.getText().toString(),

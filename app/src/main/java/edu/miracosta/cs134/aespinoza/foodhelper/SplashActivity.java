@@ -13,16 +13,23 @@ import java.util.TimerTask;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.DBHelper;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
-
+/**
+ * SplashActivity displays a loading screen before the app starts, also loads in the JSON file.
+ * @Author Alvaro Espinoza Merida
+ * CS134 Final Project
+ */
 public class SplashActivity extends AppCompatActivity {
 
     private ArrayList<FoodResource> mAllFoodResourcesList;
 
+    /**
+     * Starts when the activity is first called. Loads in the JSON file and delays the start of MainActivity.
+     * @param savedInstanceState current context
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //TODO: In the 4 second wait time, load the JSON from HTTP so it's ready for MainActivity
         mAllFoodResourcesList = JSONLoader.loadJSONFromHTTP();
 
         //Wait four seconds then go to the main activity
@@ -33,7 +40,6 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //Create an intent to go to the main activity
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                //TODO: Put the mAllFoodResourcesList into the Intent to send to MainActivity
                 intent.putParcelableArrayListExtra("AllFoodResourcesList", mAllFoodResourcesList);
                 startActivity(intent);
                 //lets close the splash activity
