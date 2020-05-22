@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
 
     /**
      * Starts when the activity is first called. Loads in the JSON file and delays the start of MainActivity.
-     * @param savedInstanceState current context
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

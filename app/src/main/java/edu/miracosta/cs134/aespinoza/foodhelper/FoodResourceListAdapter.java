@@ -15,7 +15,9 @@ import java.util.List;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
 
 /**
- * Helper class to provide custom adapter for the <code>Location</code> list.
+ * Helper class to provide custom adapter for the <code>FoodResource</code> list.
+ * @Author Alvaro Espinoza Merida
+ * CS134 Final Project
  */
 public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
@@ -24,11 +26,11 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
     private int mResourceId;
 
     /**
-     * Creates a new <code>LocationsListAdapter</code> given a mContext, resource id and list of locations.
+     * Creates a new <code>FoodResourceListAdapter</code> given a mContext, resource id and list of FoodResources.
      *
      * @param c The mContext for which the adapter is being used (typically an activity)
      * @param rId The resource id (typically the layout file name)
-     * @param foodResources The list of locations to display
+     * @param foodResources The list of FoodResources to display
      */
     public FoodResourceListAdapter(Context c, int rId, List<FoodResource> foodResources) {
         super(c, rId, foodResources);
@@ -39,7 +41,7 @@ public class FoodResourceListAdapter extends ArrayAdapter<FoodResource> {
 
     /**
      * Gets the view associated with the layout.
-     * @param pos The position of the Location selected in the list.
+     * @param pos The position of the FoodResource selected in the list.
      * @param convertView The converted view.
      * @param parent The parent - ArrayAdapter
      * @return The new view with all content set.

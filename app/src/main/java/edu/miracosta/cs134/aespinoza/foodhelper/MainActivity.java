@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,7 +25,6 @@ import java.util.List;
 
 import edu.miracosta.cs134.aespinoza.foodhelper.model.DBHelper;
 import edu.miracosta.cs134.aespinoza.foodhelper.model.FoodResource;
-import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
 
 /**
  * MainActivity, the first real screen for the app. Loads in the google map, the settings,
@@ -51,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String SETTINGS_CHOICE = "settings_choice" ;
     private String settingsChoice = "nothing" ;
 
+    /**
+     * Called on when the activity first starts. Fills in the list of FoodResource s, loads up the listView,
+     * and creates the google map.
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,25 +79,29 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
-
+    /**
+     * Plots the desired point onto the google map, gives it a custom marker, and zooms in.
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        //Event: the map comes back from Google, what to do with it ?
-        //center the location on OC 4800
         map = googleMap;
         LatLng oc4800 = new LatLng(33.190802,-117.301805);
 
-        //1) Place a "marker" there !
         map.addMarker(new MarkerOptions()
                 .title("Where the magic happens!")
                 .position(oc4800)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.my_marker)));
-        // 2) Center the "camera postion" on oc4800;
+
         CameraPosition position = new CameraPosition.Builder().target(oc4800).zoom(15f).build();
         CameraUpdate update = CameraUpdateFactory.newCameraPosition(position);
         map.moveCamera(update);
     }
 
+    /**
+     * Takes the user to the DetailsActivity of a selected item.
+     * @param v selected item
+     */
     public void viewFoodResourcesDetails(View v)
     {
         FoodResource selectedFoodResource = (FoodResource) v.getTag();
@@ -106,6 +111,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(detailsIntent);
     }
 
+    /**
+     * Is called when the Menu for the settings is first created.
+     * @param menu the chosen menu
+     * @return true or false
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

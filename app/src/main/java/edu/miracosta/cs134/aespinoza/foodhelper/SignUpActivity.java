@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     /**
      * Called when the activity first starts, takes in the user's input to attempt to sign them up.
-     * @param savedInstanceState current context
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

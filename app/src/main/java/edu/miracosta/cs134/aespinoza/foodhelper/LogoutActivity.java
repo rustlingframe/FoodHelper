@@ -27,7 +27,7 @@ public class LogoutActivity extends AppCompatActivity {
 
     /**
      * Called upon when activity first starts, creates an animation of porky pig waving goodbye.
-     * @param savedInstanceState current launch of app.
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

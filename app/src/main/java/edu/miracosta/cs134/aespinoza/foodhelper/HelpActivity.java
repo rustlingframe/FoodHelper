@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- * helpActivity made to display helpful information to the user
+ * HelpActivity made to display helpful information to the user.
+ * @Author Alfredo Hernandez Jr
  */
 public class HelpActivity extends AppCompatActivity {
 
+    /**
+     * Is called when the activity first starts.
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +23,7 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     /**
-     * Return to the main activity after reading about the app
+     * Returns to the main activity after allowing the user to read about the app
      * @param v current view.
      */
     public void goBack(View v)

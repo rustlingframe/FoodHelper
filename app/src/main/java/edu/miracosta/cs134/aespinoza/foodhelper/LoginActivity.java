@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Called upon when activity first starts.
-     * @param savedInstanceState current launch of app.
+     * @param savedInstanceState Used for instantiating Parcelable and Serializable objects.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
