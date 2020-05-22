@@ -4,7 +4,7 @@
     <string name="help_message">In these unprecedented times we need all the help we can get.         We’re all in this together! In an effort to help we’ve made an app to help you always have         food to eat. In order to use the app to the fullest we’ve also included a guide to get around         the app!</string>
     <string name="go_to_main_activity">Return</string>
     <string name="how_to_use">At the start the app shows you both free food resources and discounted         food resources. If you click on the gear icon then you will be able to limit what shows up     based on whether the resources are free or discounted.  Clicking on a one of the items will     take you to a screen with more details pertaining to the item.  The sign out button will end     your session.</string>
-    <string name="sign_out_message">Take care!</string>
+    <string name="sign_out_message">That\'s All Folks!</string>
     <string name="login_button">Login</string>
     <string name="sign_up_button">Register</string>
     <string name="reset_password_button">Reset Password</string>

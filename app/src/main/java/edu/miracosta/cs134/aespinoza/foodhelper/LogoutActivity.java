@@ -2,6 +2,7 @@ package edu.miracosta.cs134.aespinoza.foodhelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -36,8 +37,10 @@ public class LogoutActivity extends AppCompatActivity {
         }
     }
 
-    public void toggleFrameAnim(View v)
+    public void logoutButton(View v)
     {
-        // Won't need, but just in case.
+        finish() ;
+        Intent intent = new Intent(this, MainActivity.class) ;
+        startActivity(intent) ;
     }
 }
