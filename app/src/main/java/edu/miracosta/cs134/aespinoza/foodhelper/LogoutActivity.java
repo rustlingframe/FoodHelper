@@ -7,7 +7,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +26,7 @@ public class LogoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
 
-        porkyImageView = findViewById(R.id.porkieImageView) ;
+        porkyImageView = findViewById(R.id.porkyImageView) ;
 
         if(frameAnim == null)
         {
@@ -54,6 +54,9 @@ public class LogoutActivity extends AppCompatActivity {
         auth.signOut();
         finish() ;
         Intent intent = new Intent(this, MainActivity.class) ;
+        Toast.makeText(LogoutActivity.this, "That's all folks!",
+                Toast.LENGTH_SHORT).show();
+
         startActivity(intent) ;
     }
 }

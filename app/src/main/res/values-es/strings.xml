@@ -4,22 +4,22 @@
     <string name="title_activity_maps">Mapa</string>
     <string name="help_message">"En estos tiempos sin precedentes necesitamos toda la ayuda que podamos obtener. ¡Estamos todos juntos en esto! En un esfuerzo por ayudar, hemos creado una aplicación para ayudarlo a que siempre tenga comida para comer. ¡Para utilizar la aplicación al máximo, también hemos incluido una guía para moverse por la aplicación!"</string>
     <string name="go_to_main_activity">"Regreso "</string>
-    <string name="how_to_use">"Al principio, la aplicación muestra recursos de alimentos gratuitos y recursos de alimentos con descuento. Si hace clic en el ícono de ajustes, podrá limitar lo que aparece en función de si los recursos son gratuitos o tienen descuento. Al hacer clic en uno de los elementos, irá a una pantalla con más detalles relacionados con el elemento. El botón de cerrar sesión finalizará su sesión."</string>
+    <string name="how_to_use">"Al principio, la aplicación muestra recursos de alimentos gratuitos y recursos de alimentos con descuento. \nSi haces clic en el ícono de ajustes, tendrás la opción de iniciar sesión, cerrar sesión, iniciar sesión o hacer clic en el botón de ayuda, como lo has hecho. \nHacer clic en uno de los elementos de recursos alimentarios lo llevará a una pantalla con más detalles relacionados con el elemento."</string>
     <string name="sign_out_message">"¡Eso es todo amigos!"</string>
     <string name="login_button">"Iniciar sesión"</string>
     <string name="sign_up_button">Regístrate</string>
-    <string name="temporary">Taco animado o pollo</string>
+    <string name="porky_pig_logo">Porky pig logo</string>
     <string name="reset_password_button">"Restablecer la contraseña"</string>
     <string name="enter_email">"Correo electrónico"</string>
     <string name="enter_password">"Contraseña"</string>
     <string name="enter_credentials">"Por favor ingrese su información"</string>
     <string name="porky_pig">"Porky Pig despidiéndose"</string>
     <string name="summary">Elección de configuración</string>
-    <string name="action_settings">Configuración</string>
+    <string name="settings">Configuración</string>
 
-    <string name="setting_login">Iniciar sesión</string>
-    <string name="setting_logout">Cerrar sesión</string>
-    <string name="setting_sign_up">Regístrate</string>
-    <string name="setting_help">Ayuda</string>
+    <string name="setting_login">Para usuarios que regresan</string>
+    <string name="setting_logout">Para usuarias salientes</string>
+    <string name="setting_sign_up">Para usuarios nuevos y ansiosos</string>
+    <string name="setting_help">Para usuarios que solo necesitan un poco más de ayuda</string>
 
 </resources>
