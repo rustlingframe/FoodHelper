@@ -23,7 +23,7 @@ public class HelpActivity extends AppCompatActivity {
      */
     public void goBack(View v)
     {
-        Intent intent = new Intent(this, MainActivity.class) ;
+        Intent intent = new Intent(this, SettingsActivity.class) ;
         startActivity(intent) ;
         finish() ;
     }

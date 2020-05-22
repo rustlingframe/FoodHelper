@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/tab_indicator_text"
+    android:background="?android:attr/colorForegroundInverse"
     tools:context=".HelpActivity">
 
     <TextView
@@ -45,6 +45,7 @@
         android:layout_marginBottom="48dp"
         android:background="@android:color/darker_gray"
         android:gravity="clip_horizontal|center|center_horizontal"
+        android:onClick="goBack"
         android:text="@string/go_to_main_activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
