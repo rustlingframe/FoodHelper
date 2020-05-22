@@ -5,8 +5,6 @@
     <!-- Frame AnimationL sequence of images for specified duration -->
 
     <item android:drawable="@drawable/porky_pig_good_bye" android:duration="200" />
-    <item android:drawable="@drawable/flipped_porky_pig_good_bye" android:duration="200" />
-    <item android:drawable="@drawable/porky_pig_good_bye" android:duration="200" />
-    <item android:drawable="@drawable/flipped_porky_pig_good_bye" android:duration="200" />
+    <item android:drawable="@drawable/flipped_porky_pig_good_bye" android:duration="400" />
 
 </animation-list>

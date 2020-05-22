@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        deleteDatabase("foodresource") ;
-
+        /**List items and general List code.*/
         mDB = new DBHelper(this);
 
         mAllFoodResourcesList = mDB.getAllFoodResource();
@@ -67,20 +66,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
 
-        /** This is fine*/
         Log.e("MIKEMAIN", mAllFoodResourcesList.toString());
         mFoodResourceListAdapter = new FoodResourceListAdapter(this, R.layout.foodresource_list_item, mAllFoodResourcesList) ;
         mFoodResourcesListView = findViewById(R.id.foodResourcesListView) ;
         mFoodResourcesListView.setAdapter(mFoodResourceListAdapter) ;
 
+        /**Map Code.*/
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
                 findFragmentById(R.id.mapsfragment);
         mapFragment.getMapAsync(this);
 
+
+        /**Settings code.*/
         PreferenceManager.setDefaultValues(this,R.xml.preferences,false);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
-
     }
 
 
@@ -140,12 +140,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Activates when the setting icon is chosen in the MainActivity.
+     * @param item The menu in the MainActivity
+     * @return true or false
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
 
         Intent settingsIntent = new Intent(this, SettingsActivity.class);
         startActivity(settingsIntent);
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -155,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
+                    System.out.println("owo my uwu");
                     switch (key)
                     {
                         case "login":

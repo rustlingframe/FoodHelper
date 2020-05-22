@@ -4,18 +4,38 @@
     <Preference
         android:key="login"
         android:title="Login"
-        android:summary="@string/setting_login"/>
+        android:summary="@string/setting_login">
+        <intent
+            android:action="edu.miracosta.cs134.aespinoza.foodhelper.SETTING_START_ACTIVITY"
+            android:targetClass="edu.miracosta.cs134.aespinoza.foodhelper.LoginActivity"
+            android:targetPackage="edu.miracosta.cs134.aespinoza.foodhelper"/>
+    </Preference>
     <Preference
         android:key="logout"
         android:title="Logout"
-        android:summary="@string/setting_logout"/>
+        android:summary="@string/setting_logout">
+        <intent
+            android:action="edu.miracosta.cs134.aespinoza.foodhelper.SETTING_START_ACTIVITY"
+            android:targetClass="edu.miracosta.cs134.aespinoza.foodhelper.LogoutActivity"
+            android:targetPackage="edu.miracosta.cs134.aespinoza.foodhelper"/>
+    </Preference>
     <Preference
         android:key="sign_up"
         android:title="Sign Up"
-        android:summary="@string/setting_sign_up"/>
+        android:summary="@string/setting_sign_up">
+        <intent
+            android:action="edu.miracosta.cs134.aespinoza.foodhelper.SETTING_START_ACTIVITY"
+            android:targetClass="edu.miracosta.cs134.aespinoza.foodhelper.SignUpActivity"
+            android:targetPackage="edu.miracosta.cs134.aespinoza.foodhelper"/>
+    </Preference>
     <Preference
         android:key="help"
         android:title="Help"
-        android:summary="@string/setting_help"/>
+        android:summary="@string/setting_help">
+        <intent
+            android:action="edu.miracosta.cs134.aespinoza.foodhelper.SETTING_START_ACTIVITY"
+            android:targetClass="edu.miracosta.cs134.aespinoza.foodhelper.HelpActivity"
+            android:targetPackage="edu.miracosta.cs134.aespinoza.foodhelper"/>
+    </Preference>
 </PreferenceScreen>
 
