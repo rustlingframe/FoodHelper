@@ -126,6 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         long id = db.insert(FOODRESOURCE_TABLE, null, values);
         foodResource.getLocation().setId(id);
+        foodResource.setId(id) ;
         // CLOSE THE DATABASE CONNECTION
         db.close();
     }

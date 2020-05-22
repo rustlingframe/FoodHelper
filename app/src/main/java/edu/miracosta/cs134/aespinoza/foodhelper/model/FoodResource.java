@@ -16,6 +16,7 @@ import java.util.Objects;
  */
 public class FoodResource implements Parcelable {
 
+    long id ;
     Location location;
     String organizationName;
     Date startDate;
@@ -43,6 +44,7 @@ public class FoodResource implements Parcelable {
                          String state, String zipCode, String phone, double latitude, double longitude,
                          String eventDescription) {
         this.organizationName = organizationName;
+        this.id = id ;
         this.location = new Location(id, name, address, city, state, zipCode, phone, latitude, longitude);
         this.eventDescription = eventDescription;
 
@@ -57,6 +59,7 @@ public class FoodResource implements Parcelable {
                          String state, String zipCode, String phone, double latitude, double longitude,
                          String eventDescription, int isDiscounted, int isFree) {
         this.organizationName = organizationName;
+        this.id = id ;
         this.location = new Location(id, name, address, city, state, zipCode, phone, latitude, longitude);
         this.eventDescription = eventDescription;
         this.isDiscounted = isDiscounted;
@@ -73,6 +76,7 @@ public class FoodResource implements Parcelable {
 
     protected FoodResource(Parcel in) {
         location = in.readParcelable(Location.class.getClassLoader());
+        this.id = location.getId() ;
         organizationName = in.readString();
         eventDescription = in.readString();
         isDiscounted = in.readInt();
@@ -90,6 +94,22 @@ public class FoodResource implements Parcelable {
             return new FoodResource[size];
         }
     };
+
+    /**
+     * Returns the FoodResource's id
+     * @return id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets new id for FoodResource
+     * @param id new id
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
     /**
      * String getOrganizationName()- returns string of the name of the organization/group

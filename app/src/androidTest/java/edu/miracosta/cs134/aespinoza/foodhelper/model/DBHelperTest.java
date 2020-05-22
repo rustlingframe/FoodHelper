@@ -99,7 +99,7 @@ public class DBHelperTest {
     @Test
     public void getFoodResource() {
         testDB.addFoodResource(testFoodResource) ;
-        assertEquals("Testing getFoodResource", testFoodResource.getLocation().getId(), testDB.getFoodResource(1).getLocation().getId());
+        assertEquals("Testing getFoodResource", testFoodResource.getId(), testDB.getFoodResource(1).getId()) ;
 
         testFoodResource = new FoodResource(12, "testOrg", "testName",
                 "testAddress", "TestCity", "TestState", "TestZip",
