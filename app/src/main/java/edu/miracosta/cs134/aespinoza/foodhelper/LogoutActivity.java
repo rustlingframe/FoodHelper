@@ -7,12 +7,19 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogoutActivity extends AppCompatActivity {
 
     // Frame Animation
     AnimationDrawable frameAnim ; // frameAnim == null
     private ImageView porkyImageView ;
+
+    private FirebaseAuth auth ;
+    private FirebaseUser user ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +42,16 @@ public class LogoutActivity extends AppCompatActivity {
         {
             frameAnim.start() ;
         }
+
+        //TODO (2): Initialize Firebase authentication
+        auth = FirebaseAuth.getInstance() ;
+        //TODO (3): Initialize current user
+        user = auth.getCurrentUser() ;
     }
 
     public void logoutButton(View v)
     {
+        auth.signOut();
         finish() ;
         Intent intent = new Intent(this, MainActivity.class) ;
         startActivity(intent) ;

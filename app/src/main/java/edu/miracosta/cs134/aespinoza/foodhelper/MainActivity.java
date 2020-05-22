@@ -37,6 +37,7 @@ import edu.miracosta.cs134.aespinoza.foodhelper.model.JSONLoader;
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    /**ListView and Google Map Code.*/
     private List<FoodResource> mAllFoodResourcesList;
     private DBHelper mDB;
     private ListView mFoodResourcesListView;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
+    /**Settings Code.*/
     private static final String SETTINGS_CHOICE = "settings_choice" ;
     private String settingsChoice = "nothing" ;
 
